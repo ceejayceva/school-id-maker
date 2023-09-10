@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>School id maker</title>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=1" />
+      <link rel="stylesheet" href="css/normalize.css" />
+      <link rel="stylesheet" href="style.css" />
+    </head>
+<body>
+  <div class="wrapper">
+
+    <div class="id-container">
+        <div id="app-disclaimer">
+        <h1>READ:</h1>
+        <p>This web app is not an official Release of DepEd(Philippines) and 
+            also has NO DATABASE SERVER at backend so data is not collected sent to any one. 
+            ID Card Generated from this app is not valid until authorized signee approved.</p>
+            
+            <p>Use this app at your own risk.</p>
+            <p>For more info: facebook.com/carlocoronacion</p>
+
+        </div>
+        <!--Front side of ID CARD-->
+     <div id="id-card">
+         <div class="id-header">
+          <div id="logo">
+            <img src="img/schoollogo.png" alt="Sch.Logo" id="id-logo">
+          </div>
+          <div id="schooldetails">
+            <div class="schoolname" id="id-school-name">EG ELEMENTARY SCHOOL</div>
+            <div class="schooladd" id="id-school-add">BRGY. GUMIAN,INFANTA QUEZON</div>
+          </div>
+        </div> 
+        <div id="id-main">
+            <!-- \\ mugshot -->
+            <div class="mugshot">
+              <img src="img/empty-avatar.png" id="id-card-photo">
+            </div>
+            <!-- // mugshot -->
+
+            <!-- \\ brand-->
+            <div class="brand">
+              <img src="img/deped-logo.png" id="id-card-school-logo">
+              <br />
+              <span id="id-card-sy">S.Y. 2023-2024</span>
+            </div>
+
+
+            <!-- \\ details -->
+            <div class="details">
+              <div class="detail">
+                <span class="label">Name</span>
+                <span class="value" id="id-card-name">Juan D. Cruz</span>
+              </div>
+              <div class="detail">
+                <span class="label">LRN</span>
+                <span class="value" id="id-card-lrn">108794888829</span>
+              </div>
+              <div class="detail">
+                <span class="label" >Birthdate</span>
+                <span class="value" id="id-card-date-of-birth">08/01/2018</span>
+              </div>
+              <div class="detail">
+                <span class="label">Gender</span>
+                <span class="value" id="id-card-gender">Male</span>
+              </div>
+              <div class="detail">
+                <span class="label">Class</span>
+                <span class="detail-value" id="id-grade-section">6-Jasmine</span>
+              </div>
+          <div class="id-footer">
+             
+                <div class="detail" id="id-card-schoolhead">Juan D. Prinsipyal</div>
+                <div class="detail" id="id-card-position">Principal I</div>
+
+            </div>
+          </div>
+
+        </div>
+    </div>  <!--#id-card-->
+
+  <!--back side of ID CARD  bs for backside-->
+  
+    <div id="id-card-bs">
+        
+        <div class="id-header-bs">
+         <div id="incase">
+           <p>In case of emergency please notify:</p>
+         </div>
+       </div> 
+       <div id="id-main-bs">
+
+        <div id="background-logo"></div>
+           <!-- \\ details -->
+           <div class="details-bs">
+             <div class="detail">
+               <div class="label">NAME</div>
+               <div class="value" id="parent">Juan D. Cruz Sr.</div>
+             </div>
+             <div class="detail">
+               <div class="label">RESIDENCE</div>
+               <div class="value" id="address-bs">Brgy. Pinaglapatan, Infanta Quezon</div>
+             </div>
+             <div class="detail">
+               <div class="label" >MOBILE</div>
+               <div class="value" id="mobile">091929659545</div>
+             </div>
+             <div class="detail">
+                <div id="qr">
+                    <canvas id="qrcode"></canvas>
+                </div>
+            </div>
+        </div>
+         <div class="id-footer-bs">
+            
+               <p class="detail" id="disclaimer">This card is non-transferable and is the property of the school. 
+                It is only valid within a school year and as long as the learner is officially enrolled. 
+                It is the cardholder s responsibility to protect and maintain the condition of the card. 
+                This card is for the purposes of identification only.</p>
+               
+
+           </div>
+         
+
+       </div>
+   </div>  <!--#id-card-bs-->
+
+
+        <div id="id-form">
+          <div class="id-form">
+            <div for="sy" class="label">School Year</div>
+            <select id="sy" name="SY">
+              <option value="S.Y. 2023-2024">S.Y. 2023-2024</option>
+              <option value="S.Y. 2024-2025">S.Y. 2024-2025</option>
+              <option value="S.Y. 2025-2026">S.Y. 2025-2026</option>
+              <option value="S.Y. 2026-2027">S.Y. 2026-2027</option>
+            </select>
+              <div class="detail">
+                <span class="label">Name</span>
+                <span class="input">
+                  <input type="text" id="name" placeholder="Name">
+                </span>
+            </div>
+            <div class="detail">
+              <span class="label">LRN</span>
+              <span class="input">
+                <input type="text" id="lrn" placeholder="Learner Reference Number">
+              </span>
+            </div>
+
+            <div class="detail">
+              <label for="date-of-birth" class="label">Birthdate</label>
+              <input type="date" id="date-of-birth" name="date-of-birth">
+          </div>
+
+            <div class="detail">
+              <span class="label" for="gender">Gender</span>
+              <span class="input">
+                <select id="gender" name="gender">
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </span>
+            </div>
+
+            <div class="detail">
+              <span class="label">Class</span>
+              <span class="input">
+                <input type="text" id="grade-section" placeholder="Grade-Section">
+              </span>
+            </div>
+            
+            <div class="detail">
+              <span class="label" for="photo">Mugshot</span>
+              <span class="input">
+                <input type="file" id="photo" accept="image/*">
+              </span>
+            </div>
+
+            <div class="detail">
+            <span class="label">School Head</span>
+            <span class="input">
+              <input type="text" id="school-head-name" placeholder="School Head Name">
+            </span>
+            </div>
+            <div class="detail">
+              <span class="label">Position</span>
+              <span class="input">
+                <input type="text" id="school-head-position" placeholder="Position">
+              </span>
+            </div>
+            <div class="detail">
+              <span class="label">School Logo</span>
+              <span class="input">
+                <input type="file" id="id-logo-input" accept="image/*">
+              </span>
+            </div>
+          <div class="detail">
+              <span class="label">School Name</span>
+              <span class="input">
+                <input type="text" id="school-name-input" placeholder="school name">
+              </span>
+            </div>
+            <div class="detail">
+              <span class="label">School Address</span>
+              <span class="input">
+                <input type="text" id="school-add-input" placeholder="address">
+              </span>
+            </div>
+            
+
+       
+        <button onClick="saveCardAsImage()">Download ID Card front face</button>
+
+      
+           
+                <div class="detail">
+                  <span class="label">PARENT</span>
+                  <span class="input">
+                    <input type="text" id="parent-input" placeholder="Parent or Guardian name">
+                  </span>
+              </div>
+              <div class="detail">
+                <span class="label" for="residence">RESIDENCE</span>
+                <span class="input">
+                  <input type="text" id="residence" placeholder="Residence of Parent/Guardian">
+                </span>
+              </div>
+  
+              <div class="detail">
+                <label for="mobile-no" class="label">MOBILE</label>
+                <input type="text" id="mobile-no" name="mobile-no">
+            </div>
+
+              
+      
+
+          <button onClick="saveCardAsImageBS()">Download ID Card back face</button>
+   
+
+
+    </div><!--.id-form-->
+</div>
+   
+</div><!--#id-container-->
+  </div><!--.wrapper-->
+<script src="js/qrious.min.js"></script>
+<script src="script.js"></script>
+<script src="js/html2canvas.min.js"></script>
+
+
+
+
+
+
+
+</body>
+</html>

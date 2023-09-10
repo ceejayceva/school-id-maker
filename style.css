@@ -1,0 +1,210 @@
+
+body{
+  background-color: rgb(151, 149, 148);
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: flex-start; /* Align items at the top */
+  background-color: rgb(151, 149, 148);
+  padding: 20px; /* Add some padding around the content */
+  box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+.id-container {
+  display: flex;
+}
+#app-disclaimer,
+#id-card,
+#id-card-bs,
+#id-form {
+  margin: 0 10px; /* Add some space between the elements */
+}
+
+/* Rest of your CSS styles... */
+
+#app-disclaimer{
+  font-size: 1rem;
+  width:200px;
+  height: auto;
+  background-color: azure;
+  padding: 5px;
+}
+#id-card, #id-card-bs{
+  width: 335px !important;
+  height: 450px;
+  border-top: 25px;
+  border-bottom: 25px;
+  border-left:17px;
+  border-right: 17px ;
+  border-style: solid;
+  border-color: #0918e6;
+  background-color: aliceblue;
+  }
+
+  #id-card-bs{
+    padding:1px 2px;
+
+  }
+  #incase{
+    margin:0 10px;
+  }
+  .details-bs{
+    text-align: center;
+  }
+
+
+  #disclaimer{
+    font-size: 9pt;
+    font-style: italic;
+    margin:0 10px;
+    position:relative;
+    bottom:-25px;
+  }
+
+  #id-form{
+  width:300px;
+  padding:  10px;
+  background-color: antiquewhite;
+}
+#qr{
+  width: 130px;
+  height: 130px;
+  border: 1px #0b0c22 solid;
+  margin: 10px auto;
+}
+#qr canvas{
+  width: 125px;
+  height: 125px;
+}
+.id-header{
+  clear:both;
+  display: inline-block;
+}
+#logo{
+  margin:5px;
+  width: 10%;
+  position:relative;
+  float:left;
+}
+#logo img{
+  width: 80px;
+}
+
+#schooldetails{
+  width: 75%;
+  text-align: left;
+  position:relative;
+  float:right;
+  margin-top: 20px;
+  margin-left: 30px;
+  text-transform: uppercase;
+}
+.schoolname{
+  font-size: 12pt;
+  font-weight: bolder;
+    
+}
+.schooladd{
+  font-size: 9pt;
+}
+#id-main{
+  display: inline-block;
+  padding:0px 20px;
+}
+.mugshot{
+  position:relative;
+  float:left;
+  margin-left: 10px;
+}
+.mugshot img {
+  width: 110px;
+  height: 110px;
+}
+.brand{
+  float:right;
+  margin-left: 30px;
+}
+.brand img {
+  width: 100px;
+}
+#id-card .details{
+  display: block;
+  clear:both;
+  padding: 10px 0px;
+  margin-left:20px;
+}
+.detail{
+  line-height: 1.4;
+}
+#id-form .label{
+  width:100px;
+}
+.label{
+  font-weight: bolder;
+  display: inline-block;
+}
+.label::after{
+  content:":";
+  
+}
+
+.id-footer{
+  clear: both;
+  width:100%;
+  margin: 0px auto;
+  padding-top: 70px;
+}
+.id-footer .detail{
+  text-align: center;
+  padding-left:40px;
+}
+#id-card-schoolhead{
+  text-decoration:underline;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 11pt;
+}
+#id-card-position{
+  line-height:8pt;
+  font-size: 8pt;
+}
+#background-logo {
+  background-image: url('img/schoollogo.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 340px;
+  height: 340px;
+  position: absolute;
+  top: 50px;
+  opacity: 0.1; /* Adjust opacity as needed */
+  z-index: 3;
+}
+
+button {
+	box-shadow:inset 0px 1px 0px 0px #cf866c;
+	background:linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
+	background-color:#d0451b;
+	border-radius:3px;
+	border:1px solid #942911;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #854629;
+  margin-top: 10px;
+  margin-bottom:10px;
+}
+button:hover {
+	background:linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
+	background-color:#bc3315;
+}
+Button:active {
+	position:relative;
+	top:1px;
+}
