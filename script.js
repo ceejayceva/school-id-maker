@@ -132,6 +132,7 @@
     //update school logo
     const idSchoolLogo = document.getElementById("id-logo");
     const schoolLogoInput = document.getElementById("id-logo-input");
+    const backgroundLogo = document.getElementById("background-logo");
     schoolLogoInput.addEventListener("change", updateSchoolLogo);
     function updateSchoolLogo() {
         // Handle the photo upload
@@ -140,6 +141,8 @@
             const reader = new FileReader();
             reader.onload = function (e) {
               idSchoolLogo.src = e.target.result;
+                // Set the background image of the background logo element
+                backgroundLogo.style.backgroundImage = `url('${e.target.result}')`;
             };
             reader.readAsDataURL(file);
         } else {
