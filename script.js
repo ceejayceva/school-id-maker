@@ -104,11 +104,11 @@
         function updateContactInfo(){
           const contactNameParent = contactNameInput.value;
           const contactResidence = contactAddInput.value;
-          const contactNum = contactNumInput.value;
+          const contactMobileNo = contactNumInput.value;
     
           contactName.textContent = contactNameParent;
           contactAdd.textContent = contactResidence;
-          contactNum.textContent = contactNum;
+          contactNum.textContent = contactMobileNo;
     
         }
     
