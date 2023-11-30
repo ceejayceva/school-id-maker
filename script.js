@@ -103,8 +103,8 @@
     
         function updateContactInfo(){
           const contactNameParent = contactNameInput.value;
-          const contactResidence=contactAddInput.value;
-          const contactNum=contactNumInput.value;
+          const contactResidence = contactAddInput.value;
+          const contactNum = contactNumInput.value;
     
           contactName.textContent = contactNameParent;
           contactAdd.textContent = contactResidence;
