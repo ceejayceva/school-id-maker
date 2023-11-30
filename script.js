@@ -85,7 +85,7 @@
       schoolName.textContent = sName;
       schoolAdd.textContent = sAdd;
 
-    }
+    };
 
     //contact info incase of emergency
         const contactName = document.getElementById("parent");
@@ -95,22 +95,22 @@
         const contactAdd = document.getElementById("address-bs");
         const contactAddInput = document.getElementById("residence");
         contactAddInput.addEventListener("click", updateContactInfo);
-    
+
         const contactNum = document.getElementById("mobile");
         const contactNumInput = document.getElementById("mobile-no");
-        contactNumInput.addEventListener("click", updateContactInfo);
-
+        contactAddInput.addEventListener("cliclk",updateContactInfo);
     
-        function updateContactInfo(){
-          const contactNameParent = contactNameInput.value;
-          const contactResidence = contactAddInput.value;
-          const contactMobileNo = contactNumInput.value;
+   
+    function updateContactInfo(){
+         const contactNameParent = contactNameInput.value;
+         const contactResidence = contactAddInput.value;
+         const contactMobileNo = contactNumInput.value;
     
-          contactName.textContent = contactNameParent;
-          contactAdd.textContent = contactResidence;
-          contactNum.textContent = contactMobileNo;
+         contactName.textContent = contactNameParent;
+         contactAdd.textContent = contactResidence;
+         contactNum.textContent = contactMobileNo;
     
-        }
+        };
     
     //update mugshot photo
     const idCardPhoto = document.getElementById("id-card-photo");
