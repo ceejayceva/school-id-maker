@@ -1,0 +1,27 @@
+{
+  "name": "school-id-maker-web",
+  "version": "1.0.0",
+  "description": "Web version of School ID Maker - runs in browser without Electron",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "school",
+    "id",
+    "card",
+    "maker",
+    "web",
+    "html",
+    "css",
+    "javascript"
+  ],
+  "author": "Carlo Coronacion",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
