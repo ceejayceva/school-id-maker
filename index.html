@@ -4,10 +4,22 @@
     <title>School id maker</title>
       <meta charset="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=1" />
-      <link rel="stylesheet" href="css/normalize.css" />
-      <link rel="stylesheet" href="style.css" />
+      <!-- Bump ?v= after every CSS/JS change so browsers fetch the new files -->
+      <link rel="stylesheet" href="css/normalize.css?v=20261019i" />
+      <link rel="stylesheet" href="style.css?v=20261019i" />
     </head>
 <body>
+   <!-- App Header -->
+   <header id="app-header">
+     <div class="header-inner">
+       <div class="header-badge">ID</div>
+       <div class="header-text">
+         <h1>School ID Maker</h1>
+         <p>Create, save &amp; bulk-print learner ID cards</p>
+       </div>
+     </div>
+   </header>
+
    <!-- Main Content Area -->
    <div id="main-content">
       <!-- ID Card Container -->
@@ -66,7 +78,7 @@
               </div>
               <div class="detail">
                 <span class="label">Class</span>
-                <span class="detail-value" id="id-grade-section" contenteditable="true">6-Jasmine</span>
+                <span class="value" id="id-grade-section" contenteditable="true">6-Jasmine</span>
               </div>
           <div class="id-footer">
              
@@ -116,11 +128,12 @@
 
       <!-- Download Buttons -->
       <div id="download-buttons">
-     <button onclick="downloadPNG()">Download PNG</button>
-     <button onclick="downloadPDF()">Download PDF</button>
-    <button type="button" id="toggle-btn">Show Back</button>
-    <button type="button" id="reset-btn">Reset Data</button>
-    <button type="button" id="add-to-list-btn">Add to List</button>
+     <div class="panel-title">Card actions</div>
+     <button onclick="downloadPNG()" class="btn btn-png">Download PNG</button>
+     <button onclick="downloadPDF()" class="btn btn-pdf">Download PDF</button>
+    <button type="button" id="toggle-btn" class="btn btn-toggle">Show Back</button>
+    <button type="button" id="reset-btn" class="btn btn-reset">Reset Data</button>
+    <button type="button" id="add-to-list-btn" class="btn btn-add">Add to List</button>
 
       <!-- Progress Bars -->
       <div id="progress-container" style="display: none;">
@@ -141,12 +154,135 @@
     <P><strong>Try clicking out side this app if you're having trouble editing.</strong></P>
     </div>
 
+   <!-- Visual Guide -->
+   <div id="guide-section">
+     <button type="button" id="guide-toggle" class="guide-header">
+       <span class="guide-icon">📖</span> How to use this app
+       <span class="guide-caret">▾</span>
+     </button>
+     <div id="guide-body">
+       <div class="guide-steps">
+         <div class="guide-step">
+           <span class="step-num">1</span>
+           <div class="step-text">
+             <strong>Edit the card</strong>
+             <p>Click any text on the ID card (name, LRN, school, etc.) to type directly. Use <em>Show Back</em> to edit the reverse side.</p>
+           </div>
+         </div>
+         <div class="guide-step">
+           <span class="step-num">2</span>
+           <div class="step-text">
+             <strong>Add photo & logo</strong>
+             <p>Click the photo placeholder to upload a learner picture. Click the school logo to change it.</p>
+           </div>
+         </div>
+         <div class="guide-step">
+           <span class="step-num">3</span>
+           <div class="step-text">
+             <strong>Save to list</strong>
+             <p>Click <em>Add to List</em> to save the card. Saved cards appear below and can be loaded or deleted anytime.</p>
+           </div>
+         </div>
+         <div class="guide-step">
+           <span class="step-num">4</span>
+           <div class="step-text">
+             <strong>Bulk generate</strong>
+             <p>Scroll to <em>Bulk Generate</em>. Upload a DepEd SF1 (.xlsx/.xls) or CSV file to import many learners at once.</p>
+           </div>
+         </div>
+         <div class="guide-step">
+           <span class="step-num">5</span>
+           <div class="step-text">
+             <strong>Apply shared details</strong>
+             <p>Fill in School Name, Address, Head, Position, SY &amp; Logo in the <em>Card Details</em> panel, then click <em>Apply to all rows</em>.</p>
+           </div>
+         </div>
+         <div class="guide-step">
+           <span class="step-num">6</span>
+           <div class="step-text">
+             <strong>Download</strong>
+             <p>Use <em>Download all as PDF</em> (A4, 10 cards/page) or <em>ZIP (PNGs)</em> for the whole batch. Single cards use the buttons above the card.</p>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+
    <!-- Saved IDs List -->
    <div id="saved-ids-section">
-     <h3>Saved ID Cards</h3>
+     <button type="button" id="saved-toggle" class="section-header-toggle">
+       <h3>Saved ID Cards <span class="section-caret">▾</span>
+       </h3>
+     </button>
+     <span id="clear-ids-btn-wrap"><button type="button" id="clear-ids-btn" onclick="clearAllSavedIds()">Clear All</button></span>
      <div id="saved-ids-list">
        <!-- IDs will be populated here -->
      </div>
+   </div>
+
+   <!-- Bulk Generate from Excel / CSV -->
+   <div id="bulk-section">
+     <button type="button" id="bulk-toggle" class="section-header-toggle">
+       <h3>Bulk Generate from Excel / CSV <span class="section-caret">▾</span>
+       </h3>
+     </button>
+     <span id="bulk-clear-wrap" style="display:none"></span>
+     <div id="bulk-body">
+       <p class="bulk-hint">Upload a <b>DepEd School Form 1 (SF1)</b> (.xls/.xlsx) or a CSV of learners to create many IDs at once.
+        SF1 files are auto-detected — school name, year, grade &amp; section, LRN, name, gender, birthdate, address, parent, and contact are read directly from the form.
+        Fields not present in SF1 (school address, school head, position, missing contact) are left blank for you to fill in on the card.
+        <br>Alternatively upload a plain CSV with columns:
+        <code>name, lrn, birthdate, gender, class, parent, residence, mobile</code>.
+        Optional columns: <code>schoolhead, position, schoolname, schooladd, sy</code>.
+        <button type="button" id="bulk-template-btn" class="link-btn">Download CSV template</button>
+      </p>
+      <div class="bulk-controls">
+        <input type="file" id="bulk-file" accept=".xlsx,.xls,.csv">
+        <button type="button" id="bulk-import-btn" disabled>Import valid rows to list</button>
+        <button type="button" id="bulk-png-btn" disabled>Download all as ZIP (PNGs)</button>
+         <button type="button" id="bulk-pdf-btn" disabled>Download all as PDF</button>
+      </div>
+
+      <!-- Shared card details applied to every bulk row before export -->
+      <div id="bulk-card-details">
+        <h4>Card Details <small>(applied to all cards on export)</small></h4>
+        <div class="bulk-detail-grid">
+          <label>School Name
+            <input type="text" id="bulk-school-name" placeholder="School Name">
+          </label>
+          <label>School Address
+            <input type="text" id="bulk-school-add" placeholder="School Address">
+          </label>
+          <label>School Head
+            <input type="text" id="bulk-school-head" placeholder="School Head Name">
+          </label>
+          <label>Position / Designation
+            <input type="text" id="bulk-school-position" placeholder="School Head Designation">
+          </label>
+          <label>School Year
+            <select id="bulk-sy">
+              <option value="">— select —</option>
+            </select>
+          </label>
+          <label>School Logo
+            <input type="file" id="bulk-logo-input" accept="image/*">
+          </label>
+        </div>
+        <button type="button" id="bulk-apply-btn">Apply to all rows</button>
+      </div>
+
+     <div id="bulk-summary"></div>
+     <div id="bulk-preview-wrap">
+       <table id="bulk-preview">
+         <thead><tr>
+           <th>Row</th><th>Name</th><th>LRN</th><th>Class</th><th>Status</th>
+         </tr></thead>
+         <tbody id="bulk-preview-body">
+           <tr><td colspan="5" class="bulk-empty">No file loaded yet.</td></tr>
+         </tbody>
+       </table>
+     </div>
+     </div><!--#bulk-body-->
    </div>
 
    <!-- Hidden file inputs for image uploads -->
@@ -154,9 +290,11 @@
    <input type="file" id="id-logo-input" accept="image/*" style="display: none;">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="js/qrious.min.js"></script>
-<script src="script-web.js"></script>
-<script src="js/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="js/qrious.min.js?v=20261019i"></script>
+<script src="script-web.js?v=20261019i"></script>
+<script src="js/html2canvas.min.js?v=20261019i"></script>
 
 
 </body>

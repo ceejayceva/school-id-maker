@@ -35,14 +35,28 @@ const server = http.createServer((req, res) => {
     pathname = '/index.html';
   }
 
-  // Prevent directory traversal
-  if (pathname.includes('..')) {
+  // Prevent directory traversal (decode first so %2e%2e can't bypass the check,
+  // then verify the resolved path stays inside the project directory)
+  let decoded;
+  try {
+    decoded = decodeURIComponent(pathname);
+  } catch (e) {
+    res.writeHead(400);
+    res.end('Bad request');
+    return;
+  }
+  if (decoded.includes('..') || decoded.includes('\0')) {
     res.writeHead(403);
     res.end('Forbidden');
     return;
   }
 
-  const filePath = path.join(__dirname, pathname);
+  const filePath = path.normalize(path.join(__dirname, decoded));
+  if (filePath !== __dirname && !filePath.startsWith(__dirname + path.sep)) {
+    res.writeHead(403);
+    res.end('Forbidden');
+    return;
+  }
 
   fs.stat(filePath, (err, stats) => {
     if (err) {
