@@ -805,11 +805,12 @@ function downloadBackPNG() {
   });
 }
 
-// A4 multi-card PDF: CR80 cards (85.6 × 54 mm) laid out on A4 portrait
-// (210 × 297 mm) — 2 columns × 5 rows = 10 cards per page.
+// A4 multi-card PDF: PORTRAIT cards (54 mm wide × 85.6 mm tall — the CR80
+// size stood on its end) laid out on A4 portrait (210 × 297 mm).
+// 3 columns × 3 rows = 9 cards per page.
 const A4_W = 210, A4_H = 297;
-const CARD_W = 85.6, CARD_H = 54;
-const CARD_COLS = 2, CARD_ROWS = 5;
+const CARD_W = 54, CARD_H = 85.6;
+const CARD_COLS = 3, CARD_ROWS = 3;
 const CARD_GUTTER = 2; // mm gap between cards for cutting
 
 // Top-left margin so the grid is centred on the page
