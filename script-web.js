@@ -644,6 +644,12 @@ async function deleteSavedIdWeb(id) {
   }
 }
 
+// Scroll an element into view so the user sees it (progress bar, saved list)
+function scrollToEl(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
 // Progress bar functions
 function showProgress() {
   const progressContainer = document.getElementById('progress-container');
@@ -1519,6 +1525,7 @@ async function bulkImport() {
     }
   }
   loadSavedIdsWeb();
+  scrollToEl('saved-ids-section');
   setStatus('Bulk import: <b>' + added + '</b> of ' + okRows.length +
     ' valid row(s) added to the list.', added < okRows.length);
   bulkMsg('Imported <span class="ok">' + added + '</span> of ' +
@@ -1573,6 +1580,7 @@ async function bulkDownloadPNG() {
   const useZip = typeof JSZip !== 'undefined';
   const zip = useZip ? new JSZip() : null;
   showProgress();
+  scrollToEl('progress-container');
   let done = 0;
   for (const item of okRows) {
     updateProgress(Math.round((done / okRows.length) * 100),
@@ -1633,6 +1641,7 @@ async function bulkDownloadPDF() {
     getComputedStyle(back).display === 'none');
   const JSPDF = window.jspdf.jsPDF;
   showProgress();
+  scrollToEl('progress-container');
   const allImgs = [];
   let done = 0;
   for (const item of okRows) {
